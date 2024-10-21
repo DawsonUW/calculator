@@ -71,33 +71,14 @@
             isResultDisplayed = true
         }
 
-        function display(userValue){
+        function display(value){
             const resultField = document.getElementById('result');
-            let currentValue = resultField.value
 
-            //if the result is displayed or the current value is 0
-            if(isResultDisplayed || currentValue ==='0'){
-                if(currentValue==='0' && currentValue==='0'){
-                    resultField.value = '0'
-                }else{
-                    resultField.value = userValue;
-                    isResultDisplayed = false;
-                }
+            if(isResultDisplayed){
+                resultField.value = value;
+                isResultDisplayed = false;
             }else {
-                // if the value is an operator, append it
-                // if (['+','-','*','/'].includes(userValue)){
-                //     resultField.value +=currentValue
-                // }else{
-                //     let newValue=currentValue
-                //     //remove the leading zeros for the newValue if the previous character is not an operator
-                //     if(['+','-','*','/'].includes(currentValue.slice(-1))){
-                //         newValue = newValue.replace(/^0+/,'')
-                //         if(newValue === '')
-                //             newValue=0
-                //     }
-                //     resultField.value+=newValue
-                // }
-                resultField.value += userValue
+                resultField.value+=value
             }
         }
 
