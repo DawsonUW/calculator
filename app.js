@@ -1,3 +1,0 @@
-let displayValue='';
-let currentOperation = ''
-

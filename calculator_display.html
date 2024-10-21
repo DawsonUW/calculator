@@ -37,7 +37,7 @@
     <div class="calculator">
         <input type="text" id="result" readonly>
         <br>
-        <button onclick="clearScreen()">C</</button>
+        <button onclick="clearScreen()">C</button>
         <button onclick="display('7')">7</button>
         <button onclick="display('8')">8</button>
         <button onclick="display('9')">9</button>
@@ -59,13 +59,24 @@
     </div>
 
     <script>
+        // let calculationResult = 0
+        let isResultDisplayed = false
 
         function clearScreen(){
-            document.getElementById("result").value="";
+            // calculationResult = 0
+            document.getElementById("result").value="0";
+            isResultDisplayed = true
         }
 
         function display(value){
-            document.getElementById('result').value  += value;
+            const resultField = document.getElementById('result');
+
+            if(isResultDisplayed){
+                resultField.value = value;
+                isResultDisplayed = false;
+            }else {
+                resultField.value+=value
+            }
         }
 
         // function appendOperator(operator){
@@ -76,7 +87,10 @@
 
         function calculate() {
             let expression = document.getElementById("result").value;
+            // calculationResult = eval(expression)
             document.getElementById('result').value = eval(expression);
+            // calculationResult = 0
+            isResultDisplayed = true
         }
     </script>
 
