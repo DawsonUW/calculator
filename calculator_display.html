@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <title>Simple Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+
     <style>
         body {
             font-family: Arial,sans-serif;
@@ -35,12 +37,13 @@
 
 <body>
     <div class="calculator">
-        <input type="text" id="result" readonly>
+        <input type="text" id="result" disabled>
         <br>
         <button onclick="clearScreen()">C</button>
         <button onclick="display('7')">7</button>
         <button onclick="display('8')">8</button>
         <button onclick="display('9')">9</button>
+        <button onclick="display('/')">/</button>
         <br>
         <button onclick="display('4')">4</button>
         <button onclick="display('5')">5</button>
@@ -79,20 +82,20 @@
             }
         }
 
-        // function appendOperator(operator){
-        //     currentOperation = operator
-        //     displayValue+=`${operator}`;
-        //     document.getElementById('result').value = displayValue
-        // }
 
         function calculate() {
             let expression = document.getElementById("result").value;
-            // calculationResult = eval(expression)
-            document.getElementById('result').value = eval(expression);
-            // calculationResult = 0
+
+            try{
+                document.getElementById('result').value = math.evaluate(expression);
+
+            }catch (error){
+                document.getElementById('result').value="Error"
+            }
             isResultDisplayed = true
         }
     </script>
+
 
 </body>
 </html>
