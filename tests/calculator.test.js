@@ -1,6 +1,5 @@
 // Need to be improved in the future:
 // "-" as negative sign, e.g. 2--3
-// screen display test
 
 
 
@@ -16,9 +15,17 @@ describe('Calculator Functionality', () =>{
     })
 
     test('should correctly evaluate operator +', ()=>{
+        expect(document.getElementById('result').value).toBe('0');
+
         display('2')
+        expect(document.getElementById('result').value).toBe('2');
+
         display('+')
+        expect(document.getElementById('result').value).toBe('2+');
+
         display('3')
+        expect(document.getElementById('result').value).toBe('2+3');
+
         calculate()
         expect(document.getElementById('result').value).toBe('5');
     } )
@@ -44,11 +51,23 @@ describe('Calculator Functionality', () =>{
 
 
     test('should correctly evaluate operator *', ()=>{
+        expect(document.getElementById('result').value).toBe('0');
+
         display('0')
+        expect(document.getElementById('result').value).toBe('0');
+
         display('0')
+        expect(document.getElementById('result').value).toBe('0');
+
         display('2')
+        expect(document.getElementById('result').value).toBe('2');
+
         display('*')
+        expect(document.getElementById('result').value).toBe('2*');
+
         display('3')
+        expect(document.getElementById('result').value).toBe('2*3');
+
         calculate()
         expect(document.getElementById('result').value).toBe('6');
     } )
