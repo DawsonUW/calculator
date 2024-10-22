@@ -1,4 +1,3 @@
-
 let isResultDisplayed = false
 
 function clearScreen(){
@@ -52,3 +51,4 @@ function calculate() {
     isResultDisplayed = true
 }
 
+module.exports={clearScreen,display,calculate}
