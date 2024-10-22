@@ -1,3 +1,4 @@
+// const {evaluate} = require("mathjs");
 let isResultDisplayed = false
 
 function clearScreen(){
@@ -50,5 +51,23 @@ function calculate() {
     }
     isResultDisplayed = true
 }
+
+
+// add even listener for keydown events
+document.addEventListener('keydown',function(event){
+  const inputKey = event.key
+  if(inputKey>='0'&& inputKey<="9"){
+      display(inputKey)
+  }  else if(inputKey ==='+'||inputKey==='-'||inputKey==='*'||inputKey==='/'){
+      display(inputKey)
+  } else if(inputKey === 'Enter' || inputKey==='='){
+      calculate()
+
+  }else if(inputKey === 'Backspace' ){
+      clearScreen()
+  }else if(inputKey === 'c' || inputKey==='C'){
+      clearScreen()
+  }
+})
 
 module.exports={clearScreen,display,calculate}
