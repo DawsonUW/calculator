@@ -1,4 +1,4 @@
-// const {evaluate} = require("mathjs");
+const {evaluate} = require("mathjs");
 let isResultDisplayed = false
 
 function clearScreen(){
@@ -44,7 +44,7 @@ function calculate() {
     let expression = document.getElementById("result").value;
 
     try{
-        document.getElementById('result').value = math.evaluate(expression);
+        document.getElementById('result').value = evaluate(expression);
 
     }catch (error){
         document.getElementById('result').value="Error"

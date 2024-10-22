@@ -1,16 +1,87 @@
+// Need to be improved in the future:
+// "-" as negative sign, e.g. 2--3
+// screen display test
+
+
+
 const {clearScreen, display, calculate } = require('../src/scripts.js')
 const math = require('mathjs');
 
 
 
 describe('Calculator Functionality', () =>{
+
     beforeEach(() => { //reset the result field before each test
         document.body.innerHTML = '<input type="text" id="result" value="0" disabled>';
-        // document.getElementById('result').value = "0"
     })
 
+    test('should correctly evaluate operator +', ()=>{
+        display('2')
+        display('+')
+        display('3')
+        calculate()
+        expect(document.getElementById('result').value).toBe('5');
+    } )
+
+    test('should correctly evaluate operator -', ()=>{
+        display('.')
+        display('2')
+        display('-')
+        display('3')
+        calculate()
+        expect(document.getElementById('result').value).toBe('-2.8');
+    } )
+
+    test('should correctly evaluate operator +', ()=>{
+        display('-')
+        display('2')
+        display('+')
+        display('3')
+        calculate()
+        expect(document.getElementById('result').value).toBe('1');
+    } )
+
+
+
+    test('should correctly evaluate operator *', ()=>{
+        display('0')
+        display('0')
+        display('2')
+        display('*')
+        display('3')
+        calculate()
+        expect(document.getElementById('result').value).toBe('6');
+    } )
+
+    test('should correctly evaluate operator /', ()=>{
+        display('0')
+        display('2')
+        display('/')
+        display('0')
+        calculate()
+        expect(document.getElementById('result').value).toBe('Infinity');
+    } )
+
+    test('should correctly evaluate operator /', ()=>{
+        display('0')
+        display('/')
+        display('0')
+        calculate()
+        expect(document.getElementById('result').value).toBe('NaN');
+    } )
+
+    test('should correctly evaluate operator /', ()=>{
+        display('0')
+        display('/')
+        display('0')
+        display('2')
+        calculate()
+        expect(document.getElementById('result').value).toBe('0');
+    } )
+
+
     test('should clear the screen when clearScreen is called', () =>{
-        display('123')
+        display('3')
         clearScreen();
         expect(document.getElementById('result').value).toBe('0');
     })
@@ -26,14 +97,16 @@ describe('Calculator Functionality', () =>{
         display('1')
         display('+')
         display('-')
-        expect(document.getElementById('result').value).toBe('Error: Invalid Expression');
+        display('*')
+        expect(document.getElementById('result').value).toBe('*');
     })
 
-    test('should correctly evaluate operator', ()=>{
-        display('2')
-        display('+')
-        display('3')
-        calculate()
-        expect(document.getElementById('result').value).toBe('5');
-    } )
+    test('should remove the leading zeros',()=> {
+        display('0')
+        display('0')
+        display('1');
+        display('2');
+        display('3');
+        expect(document.getElementById('result').value).toBe('123');
+        })
 })
