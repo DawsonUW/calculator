@@ -3,7 +3,7 @@
 
 
 
-const {clearScreen, display, calculate } = require('../src/scripts.js')
+const {clearScreen, display, calculate } = require('../scripts.js')
 const math = require('mathjs');
 
 
